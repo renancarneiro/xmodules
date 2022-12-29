@@ -1,0 +1,7 @@
+description: Module foo
+
+tasks:
+  - !<command.exec>
+    header: Listando os arquivos do home do usuário ${env.USER}
+    commands:
+    - "ls -l ${env.HOME}"

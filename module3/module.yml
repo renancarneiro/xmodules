@@ -1,0 +1,19 @@
+description: Module foo
+params:
+  - !<input>
+    key: name
+    message: Digite seu nome
+    validation: (key) -> validate(key.length() > 4, "O nome deve possuir pelo menos 4 caracteres")
+  - !<input>
+    key: sobrenome
+    message: Digite seu sobrenome
+    validation: (key) -> validate(key.length() > 4, "O nome deve possuir pelo menos 4 caracteres")
+    only: () -> name.length() > 10
+tasks:
+  - !<echo>
+    output: |
+      Hello World, @|green,bold ${name} |@
+      Estou no diretório: ${dirname()}
+      Data atual: ${now('ddMMyyyyHHmmSSS')}
+      Arquivo Flaway: V${now('ddMMyyyyHHmmSSS')}__CREATE_TABLE
+    only: () -> name == 'Eu robo'
