@@ -1,0 +1,6 @@
+description: Module foo
+tasks:
+  - !<echo>
+    output: |
+      Valor vindo do Workspace:
+        domainDir: ${cfg('global', 'domainDir')}

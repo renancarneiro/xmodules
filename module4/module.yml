@@ -1,0 +1,23 @@
+description: Module foo
+params:
+  - !<input>
+    key: myName
+    message: Digite seu sobrenome
+    validation: (key) -> validate(key.length() > 4, "O nome deve possuir pelo menos 4 caracteres")
+tasks:
+  - !<copy>
+    header: Copiando arquivos do modulo 4
+    src:
+      path: "."
+      interpolation:
+        enabled: true
+        vars: 
+          schemaName: APP1
+          name: ${myName}
+          domainDir: src/main/java/tre_pa/app
+          flywayHash: V${now('ddMMyyyyHHmmSSS')}
+    dest:
+      path: "."
+      replace:
+        pattern: "(.*)(\\.ftl)$"
+        replacement: "$1"
