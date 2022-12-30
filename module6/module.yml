@@ -1,0 +1,28 @@
+description: Module foo
+tasks:
+  - !<plant-diagram.read>
+    header: Lendo diagrama de classe de aplicação ${dirname()}/domain.plantuml
+    path: domain.plantuml
+    on-each:
+      class: 
+        var: pClass
+        tasks:
+          # - !<copy>
+          #   header: Gerando classe JPA
+          #   src:
+          #     path: "."
+          #     interpolation:
+          #       enabled: true
+          #       vars:
+          #         pClass: ${pClass}
+          #   dest:
+          #     path: "."
+          #     replace:
+          #       pattern: "(.*)(\\.ftl)$"
+          #       replacement: "$1"
+          # - !<echo>
+          #   output: |
+          #     Oi, sou a classe ${pClass.name}
+          #     Caption: ${pClass.caption}
+          #     Stereotypes: ${pClass.stereotypes.collect { it.name.toUpperCase() } }
+          #   only: () -> pClass.stereotypes.size() > 0

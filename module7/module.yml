@@ -1,0 +1,18 @@
+description: Module foo
+tasks:
+  - !<plant-diagram.read>
+    header: Lendo diagrama de classe de aplicação ${dirname()}/domain.plantuml
+    path: domain.plantuml
+    on-each:
+      class: 
+        var: pClass
+        tasks:
+          - !<echo>
+            output: |
+              Class: ${pClass.name}
+      field:
+        var: pField
+        tasks:
+          - !<echo>
+            output: |
+              Atributo: ${pField.name} da classe ${pField.plantClass.name}
